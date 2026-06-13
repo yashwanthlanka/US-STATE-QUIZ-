@@ -27,10 +27,7 @@ while len(correct)<50:
     # FORCED EXIT 
     if user_input=='Exit':
         # SAVES THE STATES YOU MISSED INTO A CSV FILE 
-        not_guessed=[]
-        for i in states:
-            if i not in correct:
-                not_guessed.append(i)
+        not_guessed=[x for x in states if x not in correct]
         new_df=p.DataFrame(not_guessed)
         new_df.to_csv("States_you_missed.csv")
         break
