@@ -24,6 +24,9 @@ while len(correct)<50:
     else:
         user_input=sc.textinput(f"{len(correct)}/50 Are Correct ", "Enter another State Name :",)
     user_input=user_input.title()
+    # FORCED EXIT 
+    if user_input=='Exit':
+        break
     if user_input in states and user_input not in correct :
         correct.append(user_input)
         xc=data[data['state']== user_input].x.item()
