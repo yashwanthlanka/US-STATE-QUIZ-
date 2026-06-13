@@ -26,12 +26,18 @@ while len(correct)<50:
     user_input=user_input.title()
     # FORCED EXIT 
     if user_input=='Exit':
+        # SAVES THE STATES YOU MISSED INTO A CSV FILE 
+        not_guessed=[]
+        for i in states:
+            if i not in correct:
+                not_guessed.append(i)
+        new_df=p.DataFrame(not_guessed)
+        new_df.to_csv("States_you_missed.csv")
         break
     if user_input in states and user_input not in correct :
         correct.append(user_input)
         xc=data[data['state']== user_input].x.item()
         yc=data[data['state']== user_input].y.item()
-        print(xc,yc)
         a=turtle.Turtle()
         a.hideturtle()
         a.speed(1)
